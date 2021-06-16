@@ -129,13 +129,34 @@ SettingWindow* SettingWindow::GetInstance()
 
 std::string SettingWindow::GetTargetTemAndHum() const
 {
-    std::string ret = std::to_string(targetTem) + "&" + std::to_string(targetHum);
+    std::string ret = "T" + std::to_string(targetTem) + "&" + std::to_string(targetHum);
+    return ret;
+}
+
+std::string SettingWindow::GetInterval() const
+{
+    std::string ret = "I" + std::to_string(interval);
     return ret;
 }
 
 Ui::SettingWindow* SettingWindow::GetUi() const
 {
     return ui;
+}
+
+void SettingWindow::SetTargetTem(float newTargetTem)
+{
+    targetTem = newTargetTem;
+}
+
+void SettingWindow::SetTargetHum(float newtargetHum)
+{
+    targetHum = newtargetHum;
+}
+
+void SettingWindow::SetInterval(int newInterval)
+{
+    interval = newInterval;
 }
 
 

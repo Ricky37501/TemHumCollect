@@ -26,7 +26,10 @@ public:
         iss >> ret;
         return ret;
     }
+    void timerEvent(QTimerEvent* ) override;
 
+    //模拟实际的调结温湿度过程
+    void Simulate();
 private:
     Ui::CollectWindow *ui;
 
@@ -38,8 +41,8 @@ private:
     float targetHum;
 
     //采集到的温湿度
-    float curTem;
-    float curHum;
+    float curTem = 10;
+    float curHum = 10;
 
     //tcp套接字
     QTcpSocket* client;

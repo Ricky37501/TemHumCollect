@@ -22,8 +22,10 @@ public:
     void SetWhiteStyle();
     void SetTargetTem(float newTargetTem);
     void SetTargetHum(float newtargetHum);
+    void SetInterval(int newInterval);
 
     std::string GetTargetTemAndHum() const;
+    std::string GetInterval() const;
     Ui::SettingWindow* GetUi() const;
 
 
