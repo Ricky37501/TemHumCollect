@@ -48,7 +48,7 @@ private:
         flash,
     };
     Alarm curAlarm = Alarm::flash;
-    int interval = 10;
+    int interval = 5000;
     float minTem = 15.f;
     float maxTem = 35.f;
     float minHum = 30.f;

@@ -90,7 +90,7 @@
             </size>
            </property>
            <property name="text">
-            <string>采集间隔(秒)：</string>
+            <string>采集间隔(ms)：</string>
            </property>
           </widget>
          </item>

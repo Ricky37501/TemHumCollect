@@ -62,7 +62,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="leftMargin">
-            <number>100</number>
+            <number>50</number>
            </property>
            <property name="rightMargin">
             <number>100</number>
@@ -71,7 +71,7 @@
             <widget class="QLabel" name="label_tem">
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>400</width>
                <height>100</height>
               </size>
              </property>
@@ -88,7 +88,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>当前温度  ：</string>
+              <string>当前温度(摄氏)：</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -99,9 +99,15 @@
             <widget class="QTextBrowser" name="text_tem">
              <property name="maximumSize">
               <size>
-               <width>100</width>
-               <height>80</height>
+               <width>120</width>
+               <height>60</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>24</pointsize>
+              </font>
              </property>
             </widget>
            </item>
@@ -115,7 +121,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <property name="leftMargin">
-            <number>100</number>
+            <number>50</number>
            </property>
            <property name="rightMargin">
             <number>100</number>
@@ -124,7 +130,7 @@
             <widget class="QLabel" name="label_hum">
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>400</width>
                <height>100</height>
               </size>
              </property>
@@ -141,7 +147,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>当前湿度  ：</string>
+              <string>当前湿度(RH)：</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -152,9 +158,15 @@
             <widget class="QTextBrowser" name="text_hum">
              <property name="maximumSize">
               <size>
-               <width>100</width>
-               <height>80</height>
+               <width>120</width>
+               <height>60</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>24</pointsize>
+              </font>
              </property>
             </widget>
            </item>

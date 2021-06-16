@@ -75,6 +75,6 @@ void MainWindow::HandleTCP()
     connect(setWnd->GetUi()->btn_interval, &QPushButton::clicked, this, [this](){
         int newInterval = setWnd->GetUi()->edit_interval->toPlainText().toInt();
         setWnd->SetInterval(newInterval);
-        conn->write(setWnd->GetTargetTemAndHum().c_str());
+        conn->write(setWnd->GetInterval().c_str());
     });
 }
