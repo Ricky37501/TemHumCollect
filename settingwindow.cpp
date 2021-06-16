@@ -127,8 +127,33 @@ SettingWindow* SettingWindow::GetInstance()
     return instance;
 }
 
-QString SettingWindow::GetTargetTemAndHum() const
+std::string SettingWindow::GetTargetTemAndHum() const
 {
     std::string ret = std::to_string(targetTem) + "&" + std::to_string(targetHum);
-    return QString(ret.c_str());
+    return ret;
 }
+
+Ui::SettingWindow* SettingWindow::GetUi() const
+{
+    return ui;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

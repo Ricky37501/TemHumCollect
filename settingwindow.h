@@ -17,9 +17,15 @@ public:
     static SettingWindow* GetInstance();
     explicit SettingWindow(QWidget *parent = nullptr);
     ~SettingWindow();
+
     void SetDarkStyle();
     void SetWhiteStyle();
-    QString GetTargetTemAndHum() const;
+    void SetTargetTem(float newTargetTem);
+    void SetTargetHum(float newtargetHum);
+
+    std::string GetTargetTemAndHum() const;
+    Ui::SettingWindow* GetUi() const;
+
 
 private:
     static SettingWindow* instance;
@@ -28,6 +34,7 @@ private:
     //按钮组
     QButtonGroup bg_skin;
     QButtonGroup bg_alarm;
+
     //窗口状态
     enum class Skin{
         White,
@@ -39,14 +46,11 @@ private:
         flash,
     };
     Alarm curAlarm = Alarm::flash;
-
     int interval = 10;
-
     float minTem = 15.f;
     float maxTem = 35.f;
     float minHum = 30.f;
     float maxHum = 70.f;
-
     float targetTem = 25.f;
     float targetHum = 50.f;
 

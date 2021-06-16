@@ -2,6 +2,8 @@
 #define COLLECTWINDOW_H
 
 #include <QMainWindow>
+#include <QTcpSocket>
+#include <sstream>
 
 namespace Ui {
 class CollectWindow;
@@ -15,8 +17,21 @@ public:
     explicit CollectWindow(QWidget *parent = nullptr);
     ~CollectWindow();
 
+    //字符型转数字型
+    template <typename T>
+    static T String2Num(const std::string& str)
+    {
+        std::istringstream iss(str);
+        T ret;
+        iss >> ret;
+        return ret;
+    }
+
 private:
     Ui::CollectWindow *ui;
+
+    //采集间隔
+    int interval;
 
     //从控制端接收目标温度
     float targetTem;
@@ -25,6 +40,9 @@ private:
     //采集到的温湿度
     float curTem;
     float curHum;
+
+    //tcp套接字
+    QTcpSocket* client;
 };
 
 #endif // COLLECTWINDOW_H
