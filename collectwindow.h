@@ -32,7 +32,7 @@ private:
 
     //采集到的温湿度
     float curTem = 10;
-    float curHum = 10;
+    float curHum = 20;
 
     //tcp套接字
     QTcpSocket* client;

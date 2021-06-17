@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_settingwindow.h"
+#include "ui_chartwindow.h"
 #include <QStyleFactory>
 #include <QToolButton>
 #include "settingwindow.h"
@@ -23,13 +24,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     //生成设置窗口
     connect(mainUi->btn_setting, &QToolButton::clicked,this,[this](){
-        qDebug()<<setWnd;
         setWnd->show();
     });
     //生成历史图表窗口
     connect(mainUi->btn_history, &QToolButton::clicked,this,[this](){
-       qDebug()<<chartWnd;
+       chartWnd->Paint();
        chartWnd->show();
+    });
+    connect(chartWnd->GetUi()->btn_refresh, &QToolButton::clicked,this,[this](){
+        chartWnd->Paint();
+        chartWnd->adjustSize();
     });
     HandleTCP();
 }

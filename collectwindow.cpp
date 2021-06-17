@@ -55,6 +55,7 @@ CollectWindow::CollectWindow(QWidget *parent) :
         switch (str[0]) {
         //目标温湿度更新
         case 'T':{
+            //温度&湿度
             auto i = str.find('&');
             std::string tem = str.substr(1, i);
             std::string hum = str.substr(i + 1);
