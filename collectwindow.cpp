@@ -1,5 +1,6 @@
 #include "collectwindow.h"
 #include "ui_collectwindow.h"
+#include "tool.h"
 #include <QHostAddress>
 #include <sstream>
 
@@ -58,15 +59,15 @@ CollectWindow::CollectWindow(QWidget *parent) :
             std::string tem = str.substr(1, i);
             std::string hum = str.substr(i + 1);
             //储存新的目标值
-            targetTem = String2Num<float>(tem);
-            targetHum = String2Num<float>(hum);
+            targetTem = Tool::String2Num<float>(tem);
+            targetHum = Tool::String2Num<float>(hum);
             break;
         }
         //采集间隔更新
         case 'I' :{
             qDebug()<<"时间间隔更新为";
             std::string iv = str.substr(1);
-            interval = String2Num<int>(iv);
+            interval = Tool::String2Num<int>(iv);
             sendTimer->setInterval(interval);
             qDebug()<<interval;
             qDebug()<<sendTimer->interval();

@@ -5,6 +5,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 class SettingWindow;
+class ChartWindow;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,8 +21,9 @@ public:
     void HandleTCP();
 
 private:
-    SettingWindow* setWnd;
     Ui::MainWindow *mainUi;
+    SettingWindow* setWnd;
+    ChartWindow* chartWnd;
 
     //tcp连接
     QTcpServer* server;

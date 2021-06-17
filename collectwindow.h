@@ -18,16 +18,6 @@ public:
     explicit CollectWindow(QWidget *parent = nullptr);
     ~CollectWindow();
 
-    //字符型转数字型
-    template <typename T>
-    static T String2Num(const std::string& str)
-    {
-        std::istringstream iss(str);
-        T ret;
-        iss >> ret;
-        return ret;
-    }
-
     //模拟实际的调结温湿度过程
     void Simulate();
 private:

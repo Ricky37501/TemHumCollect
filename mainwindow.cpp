@@ -4,15 +4,18 @@
 #include <QStyleFactory>
 #include <QToolButton>
 #include "settingwindow.h"
+#include "chartwindow.h"
 #include <QDebug>
 #include <string>
+#include "tool.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , mainUi(new Ui::MainWindow)
+    : QMainWindow(parent),
+      mainUi(new Ui::MainWindow),
+      setWnd(SettingWindow::GetInstance()),
+      chartWnd(ChartWindow::GetInstance())
 {
     mainUi->setupUi(this);
-    setWnd = SettingWindow::GetInstance();
     //设置groupBox边框不可见
     mainUi->gb_display->setStyleSheet("border:none");
     mainUi->gb_curTem->setStyleSheet("border:none");
@@ -23,7 +26,11 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug()<<setWnd;
         setWnd->show();
     });
-
+    //生成历史图表窗口
+    connect(mainUi->btn_history, &QToolButton::clicked,this,[this](){
+       qDebug()<<chartWnd;
+       chartWnd->show();
+    });
     HandleTCP();
 }
 
@@ -51,7 +58,7 @@ void MainWindow::HandleTCP()
         conn = server->nextPendingConnection();
         //以“温度&湿度”的格式将目标温湿度传送给采集端
         conn->write(setWnd->GetTargetTemAndHum().c_str());
-        //从采集端获得实时温湿度，更新ui
+        //从采集端获得实时温湿度
         connect(conn, &QTcpSocket::readyRead, this, [this](){
             QByteArray array = conn->readAll();
             //解析字串
@@ -59,8 +66,11 @@ void MainWindow::HandleTCP()
             auto i = str.find('&');
             std::string curTem = str.substr(0, i);
             std::string curHum = str.substr(i + 1);
+            //更新ui
             mainUi->text_tem->setText(curTem.c_str());
             mainUi->text_hum->setText(curHum.c_str());
+            //将采集的信息存入数据库
+            chartWnd->SaveData(Tool::String2Num<float>(curTem), Tool::String2Num<float>(curHum));
         });
     });
     //当在设置界面点击目标温湿度保存时，向采集端发送新的目标温湿度 (信息标识：T)
